@@ -1,5 +1,5 @@
 .ScreenBar {
-  height: 15%;
+  flex: 0 1 10%;
   display: flex;
   justify-content: center;
   align-items: center;
