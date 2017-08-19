@@ -1,0 +1,31 @@
+language: node_js
+node_js:
+- node
+cache: yarn
+install:
+- npm install -g yarn
+- yarn
+env:
+  global:
+  - CXX=g++-4.8
+  - secure: KWogJIt6c8iaKByrfkZPxpCdSdeZuJ0SX2GTxu87qL4e/o75lDyERlgHntSrJlvyn/lhE87fdXoH5xf/xt9x3gYeeNPyOnzV9jcmUTH8Iu4mJ0PjU8i1iajOMvzdRtfhQxGzpIjZ3JSHSfx9ZXdke63kYbfGmAuBzZH2xoB5Mkkaa/DBmYwhWKKUW7QtTu6U//k0yKZmNQd6qkPyBLp+QeG95/GTocMMLfecmRfBo76L+OtAgwwBwQFAsTfQ+XUIAl3s2Gb3bZ2iuhAxIlj/F9Wwm6xYfaLc8FtElT+i0ja7s84TANtmI6NCAfcVjZ4uSCa8ScHNKUJfb1z+1Gxuwk1wXSzyoOZcjYn44BeL/k8WYLFk4e3aIKJPI8naqB1OYSwERiS4B1APqfh8MHw+uUHKhTYrS+iX+MgN+9ThrfzTcuWCNn2G/I65kP2eP3sl+0m3S2r0RwzyDZdS4IDOiW14+rhFUO5D7VyE+2KoGbnkBnouNH1Et4ktM3xdZS4FDYvnWK4TEV9keX8nw6FromX0tg7Uh6uT7jRKsGVTtZvrQab4uVOqNjyOOO2z6ifknotBfA08/DZRVgtg322b82yY+SW6EkhRw7mudyOyzEhDNP9RqIlQH5pO7Olo9/VzrrBlgQ++NmI/rTKaxDka50kG6Fo9uADEi30M3XlFDzI=
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+before_script:
+- npm install -g firebase-tools
+script:
+- yarn test
+- yarn build
+before_deploy:
+- XZ_OPT=-9e tar cJf build.tar.xz build
+deploy:
+- provider: script
+  script: firebase deploy --token "$FIREBASE_TOKEN" --only hosting
+  skip_cleanup: true
+  on:
+    branch: master
+    repo: hostables/musicquiz
