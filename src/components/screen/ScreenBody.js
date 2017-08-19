@@ -1,8 +1,8 @@
 import React from 'react'
 import './ScreenBody.css'
 
-const ScreenBody = ({ children }) => (
-  <div className="ScreenBody">
+const ScreenBody = ({ children, className }) => (
+  <div className={`ScreenBody ${className}`}>
     {children}
   </div>
 )

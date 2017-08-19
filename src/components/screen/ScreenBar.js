@@ -2,9 +2,9 @@ import React from 'react'
 import './ScreenBar.css'
 import '../../variables.css'
 
-const ScreenBar = ({ children, backgroundColor }) => (
+const ScreenBar = ({ children, backgroundColor, className }) => (
   <div
-    className="ScreenBar"
+    className={`ScreenBar ${className}`}
     style={{backgroundColor: backgroundColor}}
   >
     {children}
