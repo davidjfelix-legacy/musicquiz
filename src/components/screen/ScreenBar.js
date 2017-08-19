@@ -12,7 +12,8 @@ const ScreenBar = ({ children, backgroundColor, className }) => (
 )
 
 ScreenBar.defaultProps = {
-  backgroundColor: 'var(--primary)'
+  backgroundColor: 'var(--primary)',
+  parentClass: ""
 }
 
 export default ScreenBar
