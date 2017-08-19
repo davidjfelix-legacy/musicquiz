@@ -1,6 +1,6 @@
 import React from 'react'
 import './ScreenBar.css'
-import '../variables.css'
+import '../../variables.css'
 
 const ScreenBar = ({ children, backgroundColor }) => (
   <div

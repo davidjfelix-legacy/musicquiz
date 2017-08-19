@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './ScreenBody.css'
 
 const ScreenBody = ({ children }) => (
