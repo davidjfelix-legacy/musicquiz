@@ -5,6 +5,9 @@ cache: yarn
 install:
 - npm install -g yarn
 - yarn
+- cd functions
+- yarn
+- cd ../
 env:
   global:
   - CXX=g++-4.8
