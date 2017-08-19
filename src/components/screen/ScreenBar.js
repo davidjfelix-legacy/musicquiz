@@ -4,7 +4,7 @@ import '../../variables.css'
 
 const ScreenBar = ({ children, backgroundColor, className }) => (
   <div
-    className={`ScreenBar ${className}`}
+    className={className ? `ScreenBar ${className}` : 'ScreenBar'}
     style={{backgroundColor: backgroundColor}}
   >
     {children}
