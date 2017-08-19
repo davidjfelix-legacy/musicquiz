@@ -2,8 +2,10 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "dependencies": {
-    "firebase-admin": "~4.2.1",
-    "firebase-functions": "^0.5.7"
+    "axios": "^0.16.2",
+    "firebase-admin": "^5.2.1",
+    "firebase-functions": "^0.5.7",
+    "querystring": "^0.2.0"
   },
   "private": true
 }

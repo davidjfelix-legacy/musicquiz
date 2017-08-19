@@ -1,6 +1,18 @@
 {
   "rules": {
     ".read": "auth != null",
-    ".write": "auth != null"
+    ".write": "auth != null",
+    "users": {
+      ".read": false,
+      ".write": false,
+      "$id": {
+        ".read": "auth !== null && auth.uid === $id",
+        ".write": "auth !== null && auth.uid === $id",
+        "token": {
+          ".read": "auth !== null && auth.uid === $id",
+          ".write": "auth !== null && auth.uid === $id"
+        }
+      }
+    }
   }
 }
