@@ -3,7 +3,7 @@ import ScreenBar from './ScreenBar'
 import '../variables.css'
 
 const ScreenFooter = ({ children }) => (
-  <ScreenBar backgroundColor="var(--pink-1)">
+  <ScreenBar backgroundColor="var(--secondary)">
     {children}
   </ScreenBar>
 )

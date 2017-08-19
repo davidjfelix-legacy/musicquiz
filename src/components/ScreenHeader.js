@@ -3,7 +3,7 @@ import ScreenBar from './ScreenBar'
 import '../variables.css'
 
 const ScreenHeader = ({ children }) => (
-  <ScreenBar backgroundColor="var(--blue-3)">
+  <ScreenBar backgroundColor="var(--primary)">
     {children}
   </ScreenBar>
 )
