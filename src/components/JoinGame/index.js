@@ -1,5 +1,4 @@
 import React from 'react'
-import { compose, lifecycle } from 'recompose'
 
 const JoinGame = () => (
   <div>
