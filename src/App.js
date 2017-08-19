@@ -3,8 +3,7 @@ import { compose, lifecycle } from 'recompose'
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 
 import auth from './auth'
