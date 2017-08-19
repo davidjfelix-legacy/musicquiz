@@ -8,7 +8,7 @@ import {
 
 import auth from './auth'
 
-import JoinGame from './components/join-game/join-game'
+import JoinGame from './components/JoinGame'
 
 const enhance = compose(
   lifecycle({
