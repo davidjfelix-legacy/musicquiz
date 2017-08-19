@@ -1,0 +1,7 @@
+.ScreenBar {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
