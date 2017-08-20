@@ -12,6 +12,7 @@ import auth from './auth'
 import NotFound from './components/FourOhFour'
 import JoinGame from './components/JoinGame'
 import ManageGame from './components/ManageGame'
+import GameLobby from "./components/GameLobby"
 
 const enhance = compose(
   withState('user', 'updateUser', null),
@@ -32,6 +33,7 @@ const App = ({user}) => (
   <Router>
     <Switch>
       <Route exact path="/" component={JoinGame}/>
+      <Route path="/join/:joinCode/:username" render={({match}) => (<GameLobby user={user} username={match.params.username} joinCode={match.params.joinCode}/>)}/>
       <Route path="/manage" ><ManageGame user={user}/></Route>
       <Route component={NotFound} />
     </Switch>

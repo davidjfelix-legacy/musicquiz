@@ -1,10 +1,8 @@
 import React from 'react'
 import PlayerListRow from './PlayerListRow'
-import UserColor from './UserColor'
-import UserName from './Username'
 import './PlayerList.css'
 
-const colors = [
+/*const colors = [
   'firebrick',
   'hotpink',
   'tomato',
@@ -17,7 +15,7 @@ const colors = [
   'lightsteelblue',
   'wheat',
   'mistyrose'
-]
+]*/
 
 const PlayerList = ({ userIds }) => (
   <div className="PlayerList">
@@ -25,12 +23,7 @@ const PlayerList = ({ userIds }) => (
     <ul className="PlayerList-list">
       {userIds && userIds.length > 0
         ? userIds.map(userId =>
-          <li
-            className="PlayerList-player"
-          >
-            <UserColor userId={userId} />
-            <UserName userId={userId} />
-          </li>)
+          <PlayerListRow userId={userId} key={userId}/>)
         : <div className="PlayerList-empty">Game currently has no players. Share the game code with your friends!</div>
       }
     </ul>

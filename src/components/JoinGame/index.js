@@ -39,11 +39,11 @@ const JoinGame = ({gameCode, userName, onGameCodeChange, onUserNameChange}) => (
 
       <div style={{margin: '0 auto', textAlign: 'center'}}>
         <span className={'JoinGame-userNameLabel'}>User Name:</span>
-        <input id='userName' name='userName' type='userName' value={userName} maxLength='64' className={'JoinGame-userName'} onChange={onUserNameChange}></input>
+        <input id='userName' name='userName' type='userName' value={userName} maxLength='24' className={'JoinGame-userName'} onChange={onUserNameChange}></input>
       </div>
     </ScreenBody>
     <ScreenFooter>
-      <ExpandoButton href='join'>
+      <ExpandoButton to={`join/${gameCode}/${userName}`}>
         Join!
       </ExpandoButton>
     </ScreenFooter>
