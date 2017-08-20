@@ -14,20 +14,37 @@ const spotifyLoginUrl = `https://accounts.spotify.com/authorize/?client_id=${cli
 
 let childWindow = null
 
+const enhance2RiseOfTheMachines = compose(
+  withState('gameId', 'setGameId', ''),
+  withLoading(
+    (props) => (props.user === null),
+    FirebaseAuthLoading
+  ),
+  lifecycle({
+    componentWillMount() {
+      const gameRef = database.ref('games').push()
+      gameRef.set({
+        is_started: false,
+        owner_id: this.props.user.uid
+      })
+      database.ref(`games-by-user/${this.props.user.uid}`).set({
+        [gameRef.key]: true
+      })
+      this.props.setGameId(gameRef.key)
+    }
+  }),
+)
+
 const enhance = compose(
   withState('isLoginClicked', 'setLoginClicked', false),
   withState('hasToken', 'setHasToken', false),
   withState('token', 'setToken', {}),
-  withState('gameId', 'setGameId', ''),
+  withState('game', 'setGame', {}),
   withHandlers({
     onClickLogin: props => event => {
       childWindow = window.open(spotifyLoginUrl + `&state=${props.user.uid}`, 'spotifyLogin')
     },
   }),
-  withLoading(
-    (props) => (props.user === null),
-    FirebaseAuthLoading
-  ),
   withDatabaseSubscribe(
     'value',
     (props) => `users/${props.user.uid}/token`,
@@ -45,20 +62,6 @@ const enhance = compose(
     (props) => (!props.hasToken),
     SpotifyLoginComponent
   ),
-  withState('game', 'setGame', {}),
-  lifecycle({
-    componentWillMount() {
-      const gameRef = database.ref('games').push()
-      gameRef.set({
-          is_started: false,
-          owner_id: this.props.user.uid
-      })
-      database.ref(`games-by-user/${this.props.user.uid}`).set({
-        [gameRef.key]: true
-      })
-      this.props.setGameId(gameRef.key)
-    }
-  }),
   withDatabaseSubscribe(
     'value',
     (props) => (`games/${props.gameId}`),
@@ -76,4 +79,11 @@ const ManageGame = ({user, token}) => (
   </div>
 )
 
-export default enhance(ManageGame)
+const EnhancedManageGame = enhance(ManageGame)
+
+
+const ManageGameMatrix = ({user, gameId}) => (
+  <EnhancedManageGame user={user} gameId={gameId}/>
+)
+
+export default enhance2RiseOfTheMachines(ManageGameMatrix)
