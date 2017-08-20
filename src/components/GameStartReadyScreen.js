@@ -9,25 +9,9 @@ import ExpandoButton from './ExpandoButton'
 import GameUsersList from './GameUsersList'
 import './GameStartReadyScreen.css'
 
-const players = [
-  {
-    id: 'A',
-    name: 'Player 1'
-  },
-  {
-    id: 'B',
-    name: 'Player 2'
-  },
-  {
-    id: 'C',
-    name: 'Player 3'
-  }
-]
-
 const game = {
   code: 'A64E',
-  type: 'Automagic',
-  players
+  type: 'Automagic'
 }
 
 const GameStartReadyScreen = () => (
