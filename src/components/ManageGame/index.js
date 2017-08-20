@@ -10,7 +10,7 @@ import GameStartReadyScreen from '../GameStartReadyScreen'
 
 const client_id = config.spotify.client_id
 const redirect_uri = config.firebase.escaped_spotify_redirect_uri
-const spotifyLoginUrl = `https://accounts.spotify.com/authorize/?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&scope=user-read-private%20user-read-email`
+const spotifyLoginUrl = `https://accounts.spotify.com/authorize/?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&scope=user-read-private%20user-read-email%20user-modify-playback-state&20user-read-currently-playing&20user-read-playback-state`
 
 
 let childWindow = null

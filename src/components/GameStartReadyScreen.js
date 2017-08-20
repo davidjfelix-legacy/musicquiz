@@ -36,7 +36,7 @@ const GameStartReadyScreen = ({gameId, game}) => (
       </div>
     </ScreenBody>
     <ScreenFooter>
-      <ExpandoButton disabled={!game || !game.players || !Object.keys(game.players).length > 0} to="#">Start</ExpandoButton>
+      <ExpandoButton disabled={!game || !game.players || !Object.keys(game.players).length > 0} to={`/status/${gameId}`}>Start</ExpandoButton>
     </ScreenFooter>
   </Screen>
 )
