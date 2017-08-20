@@ -7,7 +7,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 1em;
-  border-top: 1px solid var(--primary-dark);
   background: linear-gradient(var(--primary), var(--primary-dark));
   /* TODO: Drop shadow */
 }
