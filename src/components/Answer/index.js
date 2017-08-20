@@ -35,7 +35,7 @@ const Answer = ({answer, onAnswerChange}) => (
         <input id='answer' name='answer' type='answer' value={answer} maxLength='64' onChange={onAnswerChange}></input>
     </ScreenBody>
     <ScreenFooter>
-      <ExpandoButton href={`join/`+ answer}>
+      <ExpandoButton href={`game/`+ answer}>
         I KNOW!
       </ExpandoButton>
     </ScreenFooter>
