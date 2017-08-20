@@ -6,8 +6,6 @@ import {
   ScreenFooter
 } from '../screen'
 
-import ExpandoButton from '../ExpandoButton'
-
 import './SpotifyLoginComponent.css'
 
 const speaker = require('./spotify.png')
