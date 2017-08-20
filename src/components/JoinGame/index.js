@@ -43,7 +43,8 @@ const JoinGame = ({gameCode, userName, onGameCodeChange, onUserNameChange}) => (
       </div>
     </ScreenBody>
     <ScreenFooter>
-      <ExpandoButton to={`join/${gameCode}/${userName}`}>
+      
+      <ExpandoButton to={`join/${gameCode}/${userName}`} disabled={!(userName && gameCode)}>
         Join!
       </ExpandoButton>
     </ScreenFooter>
