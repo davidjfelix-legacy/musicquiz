@@ -25,7 +25,7 @@
         ".read": "auth !== null && auth.uid === $id",
         ".write": "auth !== null && auth.uid === $id",
         "token": {
-          ".read": "auth !== null && auth.uid === $id",
+          ".read": true,
           ".write": "auth !== null && auth.uid === $id"
         }
       }

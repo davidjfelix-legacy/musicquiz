@@ -12,28 +12,33 @@ admin.initializeApp(functions.config().firebase)
 const proxy = express()
 proxy.all('/:gameId/*', (req, resp) => {
   console.log(req)
-  admin.database.ref(`games/${req.params.gameId}/token`).once('value')
+  admin.database().ref(`games/${req.params.gameId}/owner_id`).once('value')
     .then((snapshot) => {
-      const authStr = `Bearer ${snapshot.val().access_token}`
-      axios({
-        method: req.method,
-        url: `https://api.spotify.com${req.originalUrl.slice(`/${req.params.gameId}`.length)}`,
-        timeout: 5000,
-        headers: {
-          Authorization: authStr
-        }
-      })
-        .then((spotify_resp) => {
-          console.log(spotify_resp)
-          resp.status(spotify_resp.status)
-          resp.write(spotify_resp.data)
-        })
-        .catch(error => {
-          console.log(error)
-          resp.status(error.response.status)
-          resp.write(error.response.data)
-        })
+      console.log(snapshot.val())
+      admin.database().ref(`users/${snapshot.val()}/token`).once('value')
+        .then((snapshot) => {
+          console.log(snapshot.val())
+          const authStr = `Bearer ${snapshot.val().access_token}`
+          axios({
+            method: req.method,
+            url: `https://api.spotify.com${req.originalUrl.slice(`/${req.params.gameId}`.length)}`,
+            timeout: 5000,
+            headers: {
+              Authorization: authStr
+            }
+          })
+            .then((spotify_resp) => {
+              console.log(spotify_resp)
+              resp.status(spotify_resp.status)
+              resp.write(spotify_resp.data)
+            })
+            .catch(error => {
+              console.log(error)
+              resp.status(error.response.status)
+              resp.write(error.response.data)
+            })
 
+        })
     })
 })
 proxy.use((req, resp) => resp.sendStatus(404))
