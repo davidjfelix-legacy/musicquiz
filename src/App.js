@@ -9,6 +9,7 @@ import {
 
 import auth from './auth'
 
+import Answer from './components/Answer'
 import NotFound from './components/FourOhFour'
 import JoinGame from './components/JoinGame'
 import ManageGame from './components/ManageGame'
@@ -32,6 +33,7 @@ const App = ({user}) => (
   <Router>
     <Switch>
       <Route exact path="/" component={JoinGame}/>
+      <Route exact path='/answer' component={Answer}/>
       <Route path="/manage" ><ManageGame user={user}/></Route>
       <Route component={NotFound} />
     </Switch>
