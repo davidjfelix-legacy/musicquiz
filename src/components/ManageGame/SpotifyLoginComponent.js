@@ -1,10 +1,29 @@
 import React from 'react'
 
+import {
+  Screen,
+  ScreenBody,
+  ScreenFooter
+} from '../screen'
+
+import ExpandoButton from '../ExpandoButton'
+
+import './SpotifyLoginComponent.css'
+
+const speaker = require('./spotify.png')
+
 const SpotifyLoginComponent = ({isLoginClicked, onClickLogin}) => (
-  <div>
-    {isLoginClicked? <div>Spinner</div>: ""}
-    <button onClick={onClickLogin} >Log in to Spotify</button>
-  </div>
+  <Screen>
+    <ScreenBody>
+      <img src={speaker} style={{height: '6em'}}/>
+    </ScreenBody>
+    <ScreenFooter>
+    <div className="SpotifyLoginComponent-button" style={{color: 'white'}}>
+        {isLoginClicked? <div>Spinner</div>: ""}
+        <div onClick={onClickLogin} >Log in to Spotify</div>
+      </div>
+    </ScreenFooter>
+  </Screen>
 )
 
 export default SpotifyLoginComponent
