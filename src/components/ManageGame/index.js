@@ -70,7 +70,6 @@ const enhance = compose(
   ),
 )
 
-
 const ManageGame = ({user, token}) => (
   <div>
     {JSON.stringify(token)}
