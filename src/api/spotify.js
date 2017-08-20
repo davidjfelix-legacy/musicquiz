@@ -1,5 +1,15 @@
 import axios from 'axios'
-import config from '../config'
+
+export async function play({ access_token }) {
+  const instance = axios.create({
+    baseURL: 'https://api.spotify.com/v1/',
+    headers: { Authorization: `Bearer ${access_token}` }
+  })
+
+  instance.put('me/player/play', {
+    'context_uri': 'spotify:user:1223111115:playlist:5mSMRlwAZVJY2i5UHaEJKf'
+  })
+}
 
 const playlists = {
   items: [
@@ -148,3 +158,4 @@ export async function searchForTrack(query, limit, offset) {
 export async function searchForAlbum(query, limit, offset) {
   return await search(query, 'album', limit, offset)
 }
+
