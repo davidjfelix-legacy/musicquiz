@@ -6,13 +6,28 @@ import GameUsersList from './GameUsersList'
 import database from "../database";
 import UserResponseScreen from "./UserResponseScreen";
 
+import {
+  Screen,
+  ScreenHeader,
+  ScreenBody
+} from './screen'
+
+import './GameLobby.css';
+
 // FIXME: make this nicer
 const LobbyLoading = () => (
   <div>Loading...</div>
 )
 
 const GameLobby = ({gameId}) => (
-  <GameUsersList gameId={gameId}/>
+  <Screen className={'GameLobby-screenBody'} >
+    <ScreenHeader>
+      MusicQuiz.tech
+    </ScreenHeader>
+    <ScreenBody>
+      <GameUsersList gameId={gameId}/>
+    </ScreenBody>
+  </Screen>
 )
 
 const enhance = compose(

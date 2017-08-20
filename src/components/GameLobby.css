@@ -1,0 +1,9 @@
+@import '../variables.css';
+
+.GameLobby-main {
+  background-color: var(--white);
+}
+
+.GameLobby-screenBody {
+  justify-content: flex-start;
+}
