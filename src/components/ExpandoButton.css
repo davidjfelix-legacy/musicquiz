@@ -12,3 +12,8 @@
   align-items: center;
   text-transform: uppercase;
 }
+
+.ExpandoButton-disabled {
+  background-color: gray;
+  color: white;
+}
