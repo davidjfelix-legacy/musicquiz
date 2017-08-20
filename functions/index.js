@@ -39,3 +39,31 @@ exports.spotify_callback = functions.https.onRequest((req, resp) => {
       resp.status(500).end()
     })
 })
+
+exports.onGameCreatedCreateShortcode = functions.database.ref('games/{pushId}')
+  .onCreate((event => {
+    const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    const date = new Date()
+
+    const dayTimeInMills = date.getMilliseconds() + (1000 * (
+      date.getSeconds() + (60 * (
+        date.getMinutes() + (60 * (
+          date.getHours()
+        ))
+      ))
+    ))
+
+    const maxDayTimeInMills =  86400000 // 24 * 60 * 60 * 1000
+    const maxFourDigitB26 = 456976 // 26^4
+    const decimalFourDigitB26 = (dayTimeInMills/maxDayTimeInMills) * maxFourDigitB26
+
+    const joinCode = ALPHA.charAt(Math.floor(decimalFourDigitB26 / 17576) % 26) +
+      ALPHA.charAt(Math.floor(decimalFourDigitB26 / 676) % 26) +
+      ALPHA.charAt(Math.floor(decimalFourDigitB26 / 26) % 26) +
+      ALPHA.charAt(decimalFourDigitB26 % 26)
+
+    return event.data.ref.child('join_code').set(joinCode)
+      .then(
+        admin.database().ref(`games-by-joincode/${joinCode}`).set(event.params.pushId)
+      )
+  }))
