@@ -1,4 +1,6 @@
 import React from 'react'
+import UserColor from './UserColor'
+import UserName from './Username'
 import './PlayerList.css'
 
 const colors = [
@@ -16,23 +18,16 @@ const colors = [
   'mistyrose'
 ]
 
-const PlayerIcon = () => {
-  const color = colors[Math.floor(Math.random()*colors.length)]
-  return (
-    <div className="PlayerIcon" style={{backgroundColor: color}} />
-  )
-}
-
-const PlayerList = ({ players }) => (
+const PlayerList = ({ userIds }) => (
   <div className="PlayerList">
     <div className="title">Current Players</div>
     <ul className="PlayerList-list">
-      {players.map(player =>
+      {userIds.map(userId =>
         <li
           className="PlayerList-player"
         >
-          <PlayerIcon />
-          <span className="player-name">{player.name}</span>
+          <UserColor userId={userId} />
+          <UserName userId={userId} />
         </li>
       )}
     </ul>

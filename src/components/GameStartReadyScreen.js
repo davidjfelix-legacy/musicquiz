@@ -6,7 +6,7 @@ import {
   ScreenFooter
 } from './screen'
 import ExpandoButton from './ExpandoButton'
-import PlayerList from './PlayerList'
+import GameUsersList from './GameUsersList'
 import './GameStartReadyScreen.css'
 
 const players = [
@@ -39,7 +39,7 @@ const GameStartReadyScreen = () => (
         <div className="title">Settings</div>
       </div>
       <div className="GameStartReadyScreen-players">
-        <PlayerList players={game.players} />
+        <GameUsersList gameId="FIXME" />
       </div>
     </ScreenBody>
     <ScreenFooter>

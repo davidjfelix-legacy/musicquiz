@@ -12,6 +12,7 @@ import auth from './auth'
 import NotFound from './components/FourOhFour'
 import JoinGame from './components/JoinGame'
 import ManageGame from './components/ManageGame'
+import GameStartReadyScreen from './components/GameStartReadyScreen'
 
 const enhance = compose(
   withState('user', 'updateUser', null),
@@ -31,11 +32,10 @@ const enhance = compose(
 const App = ({user}) => (
   <Router>
     <Switch>
-      <div>
-        <Route exact path="/" component={JoinGame}/>
-        <Route path="/manage" ><ManageGame user={user}/></Route>
-        <Route component={NotFound} />
-      </div>
+      <Route exact path="/" component={JoinGame}/>
+      <Route path="/gamestart" component={GameStartReadyScreen} />
+      <Route path="/manage" ><ManageGame user={user}/></Route>
+      <Route component={NotFound} />
     </Switch>
   </Router>
 )

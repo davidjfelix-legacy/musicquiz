@@ -2,13 +2,13 @@ import React from 'react'
 import {compose, withState} from "recompose"
 import {withDatabaseSubscribe} from "./hocs"
 
-import UsersList from './UsersList'
+import PlayerList from './PlayerList'
 
 const enhance = compose(
   withState('gameUsers', 'setGameUsers', []),
   withDatabaseSubscribe(
     'value',
-    (props) => (`games/${gameId}/players`),
+    (props) => (`games/${props.gameId}/players`),
     (props) => (snapshot) => {
       const gamePlayers = snapshot.val()
       if (gamePlayers !== null && typeof gamePlayers === 'object') {
@@ -19,7 +19,7 @@ const enhance = compose(
 )
 
 const GameUsersList = ({gameUsers}) => (
-  <UsersList userIds={gameUsers}/>
+  <PlayerList userIds={gameUsers}/>
 )
 
 export default enhance(GameUsersList)
