@@ -4,6 +4,6 @@ const JoinGame = () => (
   <div>
     MUSIC QUIZ 2.0
   </div>
-);
+)
 
-export default JoinGame;
+export default JoinGame
