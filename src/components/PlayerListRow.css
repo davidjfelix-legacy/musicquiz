@@ -1,0 +1,10 @@
+.PlayerListRow {
+  padding: 0.65em 1.5em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #eee;
+}
+
