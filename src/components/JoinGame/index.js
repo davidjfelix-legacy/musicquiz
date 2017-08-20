@@ -18,15 +18,18 @@ import './index.css'
 
 const enhance = compose(
   withState('gameCode', 'setGameCode', ''),
+  withState('userName', 'setUserName', ''),
   withHandlers({
     onGameCodeChange: props => event => {
-      console.log(event);
       props.setGameCode(event.target.value);
+    },
+    onUserNameChange: props => event => {
+      props.setUserName(event.target.value);
     }
   })
 )
 
-const JoinGame = ({gameCode, onGameCodeChange}) => (
+const JoinGame = ({gameCode, userName, onGameCodeChange, onUserNameChange}) => (
   <Screen>
     <ScreenBody className={'JoinGame-container'}>
       <div style={{margin: '0 auto', textAlign: 'center'}}>
@@ -36,7 +39,7 @@ const JoinGame = ({gameCode, onGameCodeChange}) => (
 
       <div style={{margin: '0 auto', textAlign: 'center'}}>
         <span className={'JoinGame-userNameLabel'}>User Name:</span>
-        <input id='gameCode' name='gameCode' type='gameCode' value={gameCode} className={'JoinGame-userName'} onChange={onGameCodeChange}></input>
+        <input id='userName' name='userName' type='userName' value={userName} className={'JoinGame-userName'} onChange={onUserNameChange}></input>
       </div>
     </ScreenBody>
     <ScreenFooter>
