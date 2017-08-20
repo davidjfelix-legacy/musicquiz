@@ -1,5 +1,5 @@
 import React from 'react'
-import { compose, lifecycle } from 'recompose'
+import {compose, lifecycle, withState} from 'recompose'
 
 import {
   BrowserRouter as Router,
@@ -9,19 +9,28 @@ import {
 import auth from './auth'
 
 import JoinGame from './components/JoinGame'
+import ManageGame from './components/ManageGame'
 
 const enhance = compose(
+  withState('user', 'updateUser', null),
   lifecycle({
     componentWillMount() {
+      this.unsubscribeAuth = auth.onAuthStateChanged((user) => (
+        this.props.updateUser(user)
+      ))
       auth.signInAnonymously()
+    },
+    componentWillUnmount() {
+      this.unsubscribeAuth()
     }
   })
 )
 
-const App = () => (
+const App = ({user}) => (
   <Router>
     <div>
       <Route exact path="/" component={JoinGame}/>
+      <Route path="/manage" ><ManageGame user={user}/></Route>
     </div>
   </Router>
 )
