@@ -2,6 +2,22 @@
   "rules": {
     ".read": "auth != null",
     ".write": "auth != null",
+    "games": {
+      ".read": false,
+      ".write": false,
+      "$id": {
+        ".read": true,
+        ".write": "auth != null && !data.exists()"
+      }
+    },
+    "games-by-user": {
+      ".read": false,
+      ".write": false,
+      "$id": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === $id"
+      }
+    },
     "users": {
       ".read": false,
       ".write": false,

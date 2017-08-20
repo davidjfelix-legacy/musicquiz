@@ -1,20 +1,24 @@
 import React from 'react'
-import {compose, withHandlers, withState} from 'recompose'
+import {compose, lifecycle, withHandlers, withState} from 'recompose'
 
 import {withDatabaseSubscribe, withLoading} from "../hocs"
-import config from "../../config";
+import config from "../../config"
+import SpotifyLoginComponent from "./SpotifyLoginComponent"
+import FirebaseAuthLoading from "./FirebaseAuthLoading"
+import database from "../../database";
 
 const client_id = config.spotify.client_id
 const redirect_uri = config.firebase.escaped_spotify_redirect_uri
 const spotifyLoginUrl = `https://accounts.spotify.com/authorize/?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&scope=user-read-private%20user-read-email`
 
-// FIXME: this should have some warning about not being logged in with firebase
-const AuthLoading = () => (<div/>)
 
 let childWindow = null
 
 const enhance = compose(
+  withState('isLoginClicked', 'setLoginClicked', false),
   withState('hasToken', 'setHasToken', false),
+  withState('token', 'setToken', {}),
+  withState('gameId', 'setGameId', ''),
   withHandlers({
     onClickLogin: props => event => {
       childWindow = window.open(spotifyLoginUrl + `&state=${props.user.uid}`, 'spotifyLogin')
@@ -22,22 +26,43 @@ const enhance = compose(
   }),
   withLoading(
     (props) => (props.user === null),
-    AuthLoading
+    FirebaseAuthLoading
   ),
   withDatabaseSubscribe(
     'value',
     (props) => `users/${props.user.uid}/token`,
     (props) => (snapshot) => {
+      if (snapshot !== null) {
+        props.setHasToken(true)
+        props.setToken(snapshot.val())
+      }
       if (childWindow !== null) {
         childWindow.close()
       }
     }
-  )
+  ),
+  withLoading(
+    (props) => (!props.hasToken),
+    SpotifyLoginComponent
+  ),
+  lifecycle({
+    componentWillMount() {
+      const gameRef = database.ref('games').push()
+      gameRef.set({
+          owner_id: this.props.user.uid
+      })
+      database.ref(`games-by-user/${this.props.user.uid}`).set({
+        [gameRef.key]: true
+      })
+      this.props.setGameId(gameRef.key)
+    }
+  })
 )
 
 
-const ManageGame = ({user, onClickLogin}) => (
+const ManageGame = ({user, token}) => (
   <div>
+    {JSON.stringify(token)}
   </div>
 )
 
