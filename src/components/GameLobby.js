@@ -1,8 +1,9 @@
 import React from 'react'
-import {compose, withProps, withState} from "recompose"
+import {compose, lifecycle, withProps, withState} from "recompose"
 import {withDatabaseSubscribe, withLoading} from "./hocs"
 
 import GameUsersList from './GameUsersList'
+import database from "../database";
 
 // FIXME: make this nicer
 const LobbyLoading = () => (
@@ -11,9 +12,9 @@ const LobbyLoading = () => (
 
 
 const enhance = compose(
-  withProps(({match}) => ({
-    joinCode: match.params.joinCode,
-    username: match.params.username,
+  withProps((old) => ({
+    username: old.username.toUpperCase(),
+    joinCode: old.joinCode.toUpperCase()
   })),
   withState('gameId', 'setGameId', null),
   withDatabaseSubscribe(
@@ -22,9 +23,16 @@ const enhance = compose(
     (props) => (snapshot) => (props.setGameId(snapshot.val()))
   ),
   withLoading(
-    (props) => (!props.gameId !== null),
+    (props) => (props.gameId === null),
     LobbyLoading,
-  )
+  ),
+  lifecycle({
+    componentWillMount() {
+      database.ref(`users/${this.props.user.uid}/username`).set(this.props.username)
+      database.ref(`games/${this.props.gameId}/players/${this.props.user.uid}`).set(true)
+      database.ref(`user-games/${this.props.user.uid}/`).set(this.props.gameId)
+    }
+  })
 )
 
 

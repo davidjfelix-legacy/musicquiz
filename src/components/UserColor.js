@@ -8,7 +8,11 @@ const enhance = compose(
   withDatabaseSubscribe(
     'value',
     (props) => (`users/${props.userId}/color`),
-    (props) => (snapshot) => (props.setColor(snapshot.val()))
+    (props) => (snapshot) => {
+      if (snapshot.val() !== null && typeof snapshot.val() === 'string') {
+        props.setColor(snapshot.val())
+      }
+    }
   )
 )
 

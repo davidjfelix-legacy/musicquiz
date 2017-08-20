@@ -23,7 +23,7 @@ const PlayerList = ({ userIds }) => (
     <ul className="PlayerList-list">
       {userIds && userIds.length > 0
         ? userIds.map(userId =>
-          <PlayerListRow userId={userId}/>)
+          <PlayerListRow userId={userId} key={userId}/>)
         : <div className="PlayerList-empty">Game currently has no players. Share the game code with your friends!</div>
       }
     </ul>

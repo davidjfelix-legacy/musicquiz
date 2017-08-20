@@ -33,7 +33,7 @@ const App = ({user}) => (
   <Router>
     <Switch>
       <Route exact path="/" component={JoinGame}/>
-      <Route path="/join/:joinCode/:username" component={GameLobby} />
+      <Route path="/join/:joinCode/:username" render={({match}) => (<GameLobby user={user} username={match.params.username} joinCode={match.params.joinCode}/>)}/>
       <Route path="/manage" ><ManageGame user={user}/></Route>
       <Route component={NotFound} />
     </Switch>
