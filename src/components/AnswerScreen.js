@@ -3,13 +3,15 @@ import {
   Screen,
   ScreenBody
 } from './screen'
+import answerComparator from '../answer-comparator'
 import './AnswerScreen.css'
 
-const CorrectAnswerScreen = ({ userAnswer, answer, type }) => {
-  let correctness = userAnswer === answer ? 'Correct!' : 'Wrong!'
-  let feedback = userAnswer === answer
-    ? `The song's ${type} was ${answer}.`
-    : `The song's ${type} was ${answer} but you guessed ${userAnswer}.`
+const AnswerScreen = ({ userAnswer, answer }) => {
+  let comparison = answerComparator(userAnswer, answer)
+  let correctness = comparison ? 'Correct!' : 'Wrong!'
+  let feedback = comparison
+    ? `The song's title was "${answer}".`
+    : `The song's title was "${answer}" but you guessed "${userAnswer}".`
 
   return (
     <Screen className="AnswerScreen">
@@ -18,7 +20,6 @@ const CorrectAnswerScreen = ({ userAnswer, answer, type }) => {
           <div className="AnswerScreen-Correctness">{correctness}</div>
           <div className="AnswerScreen-Feedback">{feedback}</div>
         </div>
-        <div className="AnswerScreen-Scoreboard">Insert scoreboard here maybe...</div>
         <div className="AnswerScreen-WaitingMessage">
           Waiting for leader to begin next round...
         </div>
@@ -27,4 +28,4 @@ const CorrectAnswerScreen = ({ userAnswer, answer, type }) => {
   )
 }
 
-export default CorrectAnswerScreen
+export default AnswerScreen
