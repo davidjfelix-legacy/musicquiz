@@ -35,4 +35,4 @@ const UserResponseScreen = ({ answer, onAnswerChange }) => (
   </Screen>
 )
 
-export default UserResponseScreen
+export default enhance(UserResponseScreen)
