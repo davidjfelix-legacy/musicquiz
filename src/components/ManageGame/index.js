@@ -32,7 +32,7 @@ const enhance = compose(
     'value',
     (props) => `users/${props.user.uid}/token`,
     (props) => (snapshot) => {
-      if (snapshot !== null) {
+      if (snapshot.val() !== null && typeof snapshot.val() === 'object') {
         props.setHasToken(true)
         props.setToken(snapshot.val())
       }
