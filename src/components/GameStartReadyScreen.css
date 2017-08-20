@@ -1,0 +1,22 @@
+@import "../variables.css";
+
+.GameStartReadyScreen .ScreenBody {
+  background: var(--white);
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 2em;
+}
+
+.GameStartReadyScreen .ScreenBody > div {
+  margin-bottom: 1.5em;
+}
+
+.GameStartReadyScreen-code {
+  margin-left: 1.5rem;
+  font-size: 1.5em;
+}
+
+.GameStartReadyScreen .title {
+  margin-left: 1.5rem;
+  color: #5f5f5f;
+}
