@@ -12,3 +12,14 @@ a {
   color: white;
   text-decoration: none;
 }
+
+input {
+  margin: 0 auto;
+  width: 100%;
+  font-size: 2em;
+  color: var(--text);
+  background-color: var(--primary-light);
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+}

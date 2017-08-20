@@ -1,0 +1,8 @@
+.UserResponseScreen label {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.UserResponseScreen input {
+  margin-top: 0.15em;
+}
