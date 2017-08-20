@@ -33,7 +33,6 @@ const App = ({user}) => (
   <Router>
     <Switch>
       <Route exact path="/" component={JoinGame}/>
-      <Route path="/gamestart" component={GameStartReadyScreen} />
       <Route path="/manage" ><ManageGame user={user}/></Route>
       <Route component={NotFound} />
     </Switch>
