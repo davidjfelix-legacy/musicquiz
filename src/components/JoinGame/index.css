@@ -5,15 +5,8 @@
   flex-direction: column;
 }
 
-.JoinGame-gameCode {
-  margin: 0 auto;
-  width: 100%;
+.JoinGame-container input {
   font-size: 4em;
-  color: var(--text);
-  background-color: var(--primary-light);
-  border: none;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 .JoinGame-gameCodeLabel {
