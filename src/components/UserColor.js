@@ -13,7 +13,7 @@ const enhance = compose(
 )
 
 const UserColor = ({color}) => (
-  <div className="PlayerIcon" style={{backgroundColor: color}} />
+  <div className="UserColor" style={{backgroundColor: color}} />
 )
 
 export default enhance(UserColor)

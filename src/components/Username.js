@@ -1,7 +1,7 @@
 import React from 'react'
 import {withDatabaseSubscribe} from "./hocs"
 import {compose, withState} from "recompose"
-
+import './UserName.css'
 
 const enhance = compose(
   withState('username', 'setUsername', 'Unknown Player'),
@@ -13,7 +13,7 @@ const enhance = compose(
 )
 
 const Username = ({username}) => (
-  {username}
+  <span className="UserName">{username}</span>
 )
 
 export default enhance(Username)
