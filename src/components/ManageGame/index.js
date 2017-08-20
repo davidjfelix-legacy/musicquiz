@@ -6,6 +6,7 @@ import config from "../../config"
 import SpotifyLoginComponent from "./SpotifyLoginComponent"
 import FirebaseAuthLoading from "./FirebaseAuthLoading"
 import database from "../../database";
+import GameStartReadyScreen from '../GameStartReadyScreen'
 
 const client_id = config.spotify.client_id
 const redirect_uri = config.firebase.escaped_spotify_redirect_uri
@@ -25,7 +26,8 @@ const enhance2RiseOfTheMachines = compose(
       const gameRef = database.ref('games').push()
       gameRef.set({
         is_started: false,
-        owner_id: this.props.user.uid
+        owner_id: this.props.user.uid,
+        players: {}
       })
       database.ref(`games-by-user/${this.props.user.uid}`).set({
         [gameRef.key]: true
@@ -73,10 +75,8 @@ const enhance = compose(
   ),
 )
 
-const ManageGame = ({user, token}) => (
-  <div>
-    {JSON.stringify(token)}
-  </div>
+const ManageGame = ({gameId, game }) => (
+  <GameStartReadyScreen game={game} gameId={gameId} />
 )
 
 const EnhancedManageGame = enhance(ManageGame)
