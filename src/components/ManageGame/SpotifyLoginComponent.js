@@ -6,8 +6,6 @@ import {
   ScreenFooter
 } from '../screen'
 
-import ExpandoButton from '../ExpandoButton'
-
 import './SpotifyLoginComponent.css'
 
 const speaker = require('./spotify.png')
@@ -15,7 +13,7 @@ const speaker = require('./spotify.png')
 const SpotifyLoginComponent = ({isLoginClicked, onClickLogin}) => (
   <Screen>
     <ScreenBody>
-      <img src={speaker} style={{height: '6em'}}/>
+      <img src={speaker} style={{height: '6em'}} alt="spotify logo texter"/>
     </ScreenBody>
     <ScreenFooter>
     <div className="SpotifyLoginComponent-button" style={{color: 'white'}}>
