@@ -5,22 +5,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  flex-shrink: 1;
 }
 
 .JoinGame-container input {
-  font-size: 4em;
+  font-size: 6vw;
+  display: block;
 }
 
 .JoinGame-gameCodeLabel {
   display: block;
-  font-size: 4em;
+  font-size: 6vw;
   color: var(--secondary-dark-text);
 }
 
 .JoinGame-userName {
+  display: block;
   margin: 0 auto;
   width: 100%;
-  font-size: 4em;
+  font-size: 6vw;
   color: var(--text);
   background-color: var(--primary-light);
   border: none;
@@ -31,7 +34,6 @@
 
 .JoinGame-userNameLabel {
   display: block;
-  margin-top: -44px;
-  font-size: 4em;
+  font-size: 6vw;
   color: var(--secondary-dark-text);
 }
