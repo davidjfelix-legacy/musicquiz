@@ -15,11 +15,11 @@ const game = {
   players: []
 }
 
-const GameStartReadyScreen = () => (
+const GameStartReadyScreen = ({gameId, joinCode}) => (
   <Screen className="GameStartReadyScreen">
     <ScreenHeader>{game.type} Game</ScreenHeader>
     <ScreenBody topBar bottomBar>
-      <div className="GameStartReadyScreen-code">Game Code: {game.code}</div>
+      <div className="GameStartReadyScreen-code">Game Code: {joinCode}</div>
       <div className="GameStartReadyScreen-Settings">
         <div className="Settings-Title title">Settings</div>
         <ul className="Settings-List">
@@ -38,7 +38,7 @@ const GameStartReadyScreen = () => (
         </ul>
       </div>
       <div className="GameStartReadyScreen-players">
-        <GameUsersList gameId="FIXME" />
+        <GameUsersList gameId={gameId} />
       </div>
     </ScreenBody>
     <ScreenFooter>

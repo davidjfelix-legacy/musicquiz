@@ -45,10 +45,12 @@ const enhance = compose(
     (props) => (!props.hasToken),
     SpotifyLoginComponent
   ),
+  withState('game', 'setGame', {}),
   lifecycle({
     componentWillMount() {
       const gameRef = database.ref('games').push()
       gameRef.set({
+          is_started: false,
           owner_id: this.props.user.uid
       })
       database.ref(`games-by-user/${this.props.user.uid}`).set({
@@ -56,7 +58,16 @@ const enhance = compose(
       })
       this.props.setGameId(gameRef.key)
     }
-  })
+  }),
+  withDatabaseSubscribe(
+    'value',
+    (props) => (`games/${props.gameId}`),
+    (props) => (snapshot) => {
+      if (snapshot.val() !== null && typeof snapshot.val() === 'object') {
+        props.setGame(snapshot.val())
+      }
+    }
+  ),
 )
 
 

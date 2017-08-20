@@ -4,12 +4,16 @@ import {withDatabaseSubscribe, withLoading} from "./hocs"
 
 import GameUsersList from './GameUsersList'
 import database from "../database";
+import UserResponseScreen from "./UserResponseScreen";
 
 // FIXME: make this nicer
 const LobbyLoading = () => (
   <div>Loading...</div>
 )
 
+const GameLobby = ({gameId}) => (
+  <GameUsersList gameId={gameId}/>
+)
 
 const enhance = compose(
   withProps((old) => ({
@@ -32,12 +36,30 @@ const enhance = compose(
       database.ref(`games/${this.props.gameId}/players/${this.props.user.uid}`).set(true)
       database.ref(`user-games/${this.props.user.uid}/`).set(this.props.gameId)
     }
-  })
+  }),
+  withState('game', 'setGame', {}),
+  withDatabaseSubscribe(
+    'value',
+    (props) => (`games/${props.gameId}`),
+    (props) => (snapshot) => {
+      if (snapshot.val() !== null && typeof snapshot.val() === 'object') {
+        props.setGame(snapshot.val())
+      }
+    }
+  ),
+  withLoading(
+    (props) => {
+      if (props.game === null) {
+        return true
+      } else {
+        if (props.game.is_started === false || props.game.is_started === null) {
+          return true
+        }
+        return false
+      }
+    },
+    GameLobby
+  )
 )
 
-
-const GameLobby = ({gameId}) => (
-  <GameUsersList gameId={gameId}/>
-)
-
-export default enhance(GameLobby)
+export default enhance(UserResponseScreen)
