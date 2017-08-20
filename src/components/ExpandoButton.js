@@ -1,7 +1,8 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './ExpandoButton.css'
 
-const ExpandoButton = ({ children, disabled, href }) => {
+const ExpandoButton = ({children, disabled, to}) => {
   if (disabled) {
     return (
       <div className="ExpandoButton ExpandoButton-disabled">
@@ -13,11 +14,11 @@ const ExpandoButton = ({ children, disabled, href }) => {
   }
 
   return (
-    <a className="ExpandoButton" href={href}>
+    <Link className="ExpandoButton" to={to}>
       <div className="ExpandoButton-content">
         {children}
       </div>
-    </a>
+    </Link>
   )
 }
 
