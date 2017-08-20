@@ -5,7 +5,6 @@ import {
   withHandlers
 } from 'recompose'
 
-
 import {
   ScreenBody,
   Screen,
@@ -13,6 +12,7 @@ import {
 } from '../screen'
 
 import ExpandoButton from '../ExpandoButton'
+import CreateGameButton from '../CreateGame'
 
 import './index.css'
 
@@ -31,7 +31,7 @@ const enhance = compose(
 
 const JoinGame = ({gameCode, userName, onGameCodeChange, onUserNameChange}) => (
   <Screen>
-    <ScreenBody className={'JoinGame-container'}>
+    <ScreenBody className={'JoinGame-container'} bottomBar>
       <div style={{margin: '0 auto', textAlign: 'center'}}>
         <span className={'JoinGame-gameCodeLabel'}>Game Code:</span>
         <input id='gameCode' name='gameCode' type='gameCode' value={gameCode} maxLength='4' className={'JoinGame-gameCode'} onChange={onGameCodeChange}></input>
@@ -47,6 +47,9 @@ const JoinGame = ({gameCode, userName, onGameCodeChange, onUserNameChange}) => (
         Join!
       </ExpandoButton>
     </ScreenFooter>
+    <div style={{position: 'absolute', bottom: '10vh', right: '7vw'}}>
+      <CreateGameButton to={'manage'}/>
+    </div>
   </Screen>
 );
 

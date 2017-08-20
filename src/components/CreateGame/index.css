@@ -1,0 +1,10 @@
+@import '../../variables.css';
+
+.CreateGameButton-button {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  align-self: flex-end;
+  color: var(--secondary-dark-text);
+}

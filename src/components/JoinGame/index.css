@@ -1,8 +1,10 @@
 @import '../../variables.css';
 
 .JoinGame-container {
+  align-content: flex-start;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .JoinGame-container input {
@@ -10,7 +12,6 @@
 }
 
 .JoinGame-gameCodeLabel {
-  margin-top: 55%;
   display: block;
   font-size: 4em;
   color: var(--secondary-dark-text);
@@ -25,6 +26,7 @@
   border: none;
   text-align: center;
   text-transform: uppercase;
+  margin-bottom: 50%;
 }
 
 .JoinGame-userNameLabel {
