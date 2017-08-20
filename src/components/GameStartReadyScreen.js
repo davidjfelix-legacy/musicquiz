@@ -9,17 +9,11 @@ import ExpandoButton from './ExpandoButton'
 import GameUsersList from './GameUsersList'
 import './GameStartReadyScreen.css'
 
-const game = {
-  code: 'A64E',
-  type: 'Automagic',
-  players: []
-}
-
-const GameStartReadyScreen = ({gameId, joinCode}) => (
+const GameStartReadyScreen = ({gameId, game}) => (
   <Screen className="GameStartReadyScreen">
-    <ScreenHeader>{game.type} Game</ScreenHeader>
+    <ScreenHeader>Automagic Game</ScreenHeader>
     <ScreenBody topBar bottomBar>
-      <div className="GameStartReadyScreen-code">Game Code: {joinCode}</div>
+      <div className="GameStartReadyScreen-code">Game Code: {game.join_code}</div>
       <div className="GameStartReadyScreen-Settings">
         <div className="Settings-Title title">Settings</div>
         <ul className="Settings-List">
@@ -42,7 +36,7 @@ const GameStartReadyScreen = ({gameId, joinCode}) => (
       </div>
     </ScreenBody>
     <ScreenFooter>
-      <ExpandoButton disabled={!game.players.length > 0} href="#">Start</ExpandoButton>
+      <ExpandoButton disabled={!game || !game.players || !Object.keys(game.players).length > 0} to="#">Start</ExpandoButton>
     </ScreenFooter>
   </Screen>
 )
