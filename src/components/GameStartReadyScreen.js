@@ -34,7 +34,7 @@ const GameStartReadyScreen = () => (
   <Screen className="GameStartReadyScreen">
     <ScreenHeader>{game.type} Game</ScreenHeader>
     <ScreenBody backgroundColor="white">
-      <div className="GameStartReadyScreen-code">Game Code: <strong>{game.code}</strong></div>
+      <div className="GameStartReadyScreen-code">Game Code: {game.code}</div>
       <div className="GameStartReadyScreen-settings">
         <div className="title">Settings</div>
       </div>
