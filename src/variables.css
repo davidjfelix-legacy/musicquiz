@@ -1,10 +1,12 @@
 :root {
+    --white: #fafafa;
     --primary: #28b5f4;
     --primary-light: #72e7ff;
     --primary-dark: #0085c1;
     --secondary: #ff4081;
     --secondary-light: #ff79b0;
     --secondary-dark: #c60055;
-    --secondary-dark-text: #f5f5f5;    
-    --text: #37464f;    
+    --secondary-dark-text: #f5f5f5;
+    --text: #37464f;
+    --header-shadow: 0 2px 5px rgba(0,0,0,0.26);
 }

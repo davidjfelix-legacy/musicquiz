@@ -4,7 +4,7 @@ import '../../variables.css'
 
 const ScreenBar = ({ children, backgroundColor, className }) => (
   <div
-    className={`ScreenBar ${className}`}
+    className={className ? `ScreenBar ${className}` : 'ScreenBar'}
     style={{backgroundColor: backgroundColor}}
   >
     {children}
@@ -12,7 +12,8 @@ const ScreenBar = ({ children, backgroundColor, className }) => (
 )
 
 ScreenBar.defaultProps = {
-  backgroundColor: 'var(--primary)'
+  backgroundColor: 'var(--primary)',
+  parentClass: ""
 }
 
 export default ScreenBar

@@ -4,10 +4,9 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1em;
-  border-top: 1px solid var(--primary-dark);
   background: linear-gradient(var(--primary), var(--primary-dark));
   /* TODO: Drop shadow */
 }

@@ -1,0 +1,6 @@
+@import "../../variables.css";
+
+.ScreenHeader {
+  z-index: 1;
+  box-shadow: var(--header-shadow);
+}

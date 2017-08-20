@@ -31,11 +31,9 @@ const enhance = compose(
 const App = ({user}) => (
   <Router>
     <Switch>
-      <div>
-        <Route exact path="/" component={JoinGame}/>
-        <Route path="/manage" ><ManageGame user={user}/></Route>
-        <Route component={NotFound} />
-      </div>
+      <Route exact path="/" component={JoinGame}/>
+      <Route path="/manage" ><ManageGame user={user}/></Route>
+      <Route component={NotFound} />
     </Switch>
   </Router>
 )
