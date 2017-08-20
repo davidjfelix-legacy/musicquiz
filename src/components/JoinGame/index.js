@@ -34,12 +34,12 @@ const JoinGame = ({gameCode, userName, onGameCodeChange, onUserNameChange}) => (
     <ScreenBody className={'JoinGame-container'}>
       <div style={{margin: '0 auto', textAlign: 'center'}}>
         <span className={'JoinGame-gameCodeLabel'}>Game Code:</span>
-        <input id='gameCode' name='gameCode' type='gameCode' value={gameCode} className={'JoinGame-gameCode'} onChange={onGameCodeChange}></input>
+        <input id='gameCode' name='gameCode' type='gameCode' value={gameCode} maxLength='4' className={'JoinGame-gameCode'} onChange={onGameCodeChange}></input>
       </div>
 
       <div style={{margin: '0 auto', textAlign: 'center'}}>
         <span className={'JoinGame-userNameLabel'}>User Name:</span>
-        <input id='userName' name='userName' type='userName' value={userName} className={'JoinGame-userName'} onChange={onUserNameChange}></input>
+        <input id='userName' name='userName' type='userName' value={userName} maxLength='64' className={'JoinGame-userName'} onChange={onUserNameChange}></input>
       </div>
     </ScreenBody>
     <ScreenFooter>

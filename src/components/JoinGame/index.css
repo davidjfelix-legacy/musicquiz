@@ -13,6 +13,7 @@
   background-color: var(--primary-light);
   border: none;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .JoinGame-gameCodeLabel {
@@ -30,6 +31,7 @@
   background-color: var(--primary-light);
   border: none;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .JoinGame-userNameLabel {
