@@ -9,7 +9,6 @@ import {
 import {
   ScreenBody,
   Screen,
-  ScreenHeader,
   ScreenFooter
 } from '../screen'
 
