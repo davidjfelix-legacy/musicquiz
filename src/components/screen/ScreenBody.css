@@ -8,5 +8,14 @@
   align-items: center;
   padding: 1em;
   background: linear-gradient(var(--primary), var(--primary-dark));
+  overflow: scroll;
   /* TODO: Drop shadow */
+}
+
+.ScreenBody.WithTopBar {
+  margin-top: 7vh;
+}
+
+.ScreenBody.WithBottomBar {
+  margin-bottom: 7vh;
 }

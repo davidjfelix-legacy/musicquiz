@@ -1,9 +1,10 @@
 import React from 'react'
 import ScreenBar from './ScreenBar'
+import './ScreenFooter.css'
 import '../../variables.css'
 
 const ScreenFooter = ({ children, className }) => (
-  <ScreenBar className={className ? className : ''} backgroundColor="var(--secondary)">
+  <ScreenBar className={className ? `ScreenFooter ${className}` : 'ScreenFooter'} backgroundColor="var(--secondary)">
     {children}
   </ScreenBar>
 )
