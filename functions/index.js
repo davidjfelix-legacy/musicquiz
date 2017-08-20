@@ -62,7 +62,7 @@ exports.spotify_callback = functions.https.onRequest((req, resp) => {
     .then((spotify_resp) => {
       console.log(spotify_resp)
       const token = spotify_resp.data
-      token['issued_at'] = (new Data).toJSON()
+      token['issued_at'] = (new Date()).toJSON()
       admin.database().ref(`users/${req.query.state}/token`).set(token)
       resp.status(200).end()
     })
