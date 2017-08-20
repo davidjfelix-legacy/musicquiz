@@ -1,0 +1,10 @@
+.AnswerScreen {
+  text-align: center;
+  color: white;
+}
+
+.AnswerScreen-Correctness {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
