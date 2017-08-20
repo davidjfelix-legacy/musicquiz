@@ -1,10 +1,12 @@
 import React from 'react'
-
-import Screen from './Screen'
-import ScreenHeader from './ScreenHeader'
-import ScreenBody from './ScreenBody'
-import ScreenFooter from './ScreenFooter'
+import {
+  Screen,
+  ScreenHeader,
+  ScreenBody,
+  ScreenFooter
+} from './screen'
 import ExpandoButton from './ExpandoButton'
+import './AutomagicSettingsScreen.css'
 
 const AutomagicSettingsScreen = () => (
   <Screen className="AutomagicSettings">
@@ -19,7 +21,7 @@ const AutomagicSettingsScreen = () => (
       </div>
     </ScreenBody>
     <ScreenFooter>
-      <ExpandoButton href="#">GO</ExpandoButton>
+      <ExpandoButton href="#">Start</ExpandoButton>
     </ScreenFooter>
   </Screen>
 )
