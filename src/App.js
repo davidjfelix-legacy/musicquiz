@@ -12,7 +12,6 @@ import auth from './auth'
 import NotFound from './components/FourOhFour'
 import JoinGame from './components/JoinGame'
 import ManageGame from './components/ManageGame'
-import GameStartReadyScreen from './components/GameStartReadyScreen'
 
 const enhance = compose(
   withState('user', 'updateUser', null),
