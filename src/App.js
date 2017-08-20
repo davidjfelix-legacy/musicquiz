@@ -14,6 +14,7 @@ import JoinGame from './components/JoinGame'
 import ManageGame from './components/ManageGame'
 import GameLobby from "./components/GameLobby"
 import UserResponseScreen from './components/UserResponseScreen'
+import GameStatus from './components/GameStatus'
 
 const enhance = compose(
   withState('user', 'updateUser', null),
@@ -35,6 +36,9 @@ const App = ({user}) => (
     <Switch>
       <Route exact path="/" component={JoinGame}/>
       <Route path="/join/:joinCode/:username" render={({match}) => (<GameLobby user={user} username={match.params.username} joinCode={match.params.joinCode}/>)}/>
+      <Route path="/status/:gameId" render={({ match }) => (
+        <GameStatus user={user} gameId={match.params.gameId} />
+      )}/>
       <Route exact path='/answer' component={UserResponseScreen} />
       <Route path="/manage" ><ManageGame user={user}/></Route>
       <Route component={NotFound} />
